@@ -1,21 +1,23 @@
-from setuptools import find_packages,setup
+from setuptools import find_packages,setup 
 from typing import List
 
 HYPHEN_DOT_E="-e ."
 def get_packages(file_path:str)->List[str]:
     '''
-    This function will return the list of requirements.
+    This function will read the packages line by line
     '''
-    requirements=[]
+    requirement=[]
     with open(file_path) as file_obj:
-        requirements=file_obj.readlines()
-        requirements=[req.replace("\n","") for req in requirements]
-        if HYPHEN_DOT_E in requirements:
-            requirements.remove(HYPHEN_DOT_E)
-    return requirements
+        requirement=file_obj.readlines()
+        requirement-[req.replace("\n","") for req in requirement]
+        if HYPHEN_DOT_E in requirement:
+            requirement.remove(HYPHEN_DOT_E)
+
+    return requirement
+
 
 setup(
-    name="car price predictor",
+    name="car_price_prediction",
     version="0.0.1",
     author="Arjun Kumar",
     author_email="aarrjunkkumar619@gmail.com",
